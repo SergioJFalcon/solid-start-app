@@ -24,10 +24,8 @@ export const authRouter = createTRPCRouter({
             return data;
         }),
     login: publicProcedure
-    // .input(wrap(object({ username: string(), password: string() })))
     .query(async _ => {
       "user server";
-
       const response = await fetch(`${process.env.VITE_JC_HOSTNAME}/login`, {
         method: "POST",
         headers: {
@@ -47,13 +45,26 @@ export const authRouter = createTRPCRouter({
       return data;
     }),
     refreshToken: publicProcedure
-        .input(wrap(string()))
-        .query(({ input }: { input: string }) => {
-            return `Hello ${input}!`;
-        }),
-    stream: publicProcedure
-        .input(wrap(string()))
-        .query(({ input }: { input: string }) => {
-            return `Hello ${input}!`;
-        }),
+      .query(async _ => {
+        "user server";
+        // TODO: Implement refresh token logic in a context
+        const response = await fetch(`${process.env.VITE_JC_HOSTNAME}/refresh`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.VITE_REFRESH_TOKEN}`,
+          },
+          body: JSON.stringify(
+            {
+              username: process.env.VITE_USERNAME,
+              password: process.env.VITE_PASSWORD,
+            }
+          ),
+        });
+        if (!response.ok) {
+          throw new Error("Failed to login");
+        }
+        const data = await response.json();
+        return data;
+      }),
 });
