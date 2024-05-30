@@ -42,6 +42,7 @@ export const authRouter = createTRPCRouter({
         throw new Error("Failed to login");
       }
       const data = await response.json();
+      // console.log("LOGIN data: ", data)
       return data;
     }),
     refreshToken: publicProcedure
@@ -65,6 +66,7 @@ export const authRouter = createTRPCRouter({
           throw new Error("Failed to login");
         }
         const data = await response.json();
+        // console.log("data: ", data)
         return data;
       }),
 });

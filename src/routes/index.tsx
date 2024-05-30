@@ -5,7 +5,7 @@ import { api } from "~/lib/api";
 
 export default function Home() {
   const hello = createAsync(() => api.auth.hello.query());
-  const loginUser = createAsync(() => api.auth.login.query());
+  // const loginUser = createAsync(() => api.auth.login.query());
 
   return (
     <main class="text-center mx-auto text-gray-700 p-4">
