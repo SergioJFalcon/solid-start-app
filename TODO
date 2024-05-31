@@ -1,1 +1,21 @@
 https://www.npmjs.com/package/@llm-eaf/node-event-source
+
+<!-- Example-->
+
+// this.res is Express Response
+await nodeEventSource(`https://api.openai.com/v1${url}`, {
+  method: method,
+  headers: {
+    Authorization: "************",
+    "Content-Type": "application/json",
+  },
+  data: this.req.body,
+  onOpen: () => {
+    this.res.type(EventStreamContentType);
+  },
+  onMessage: (ev) => {
+    this.res.write(`data: ${ev.data}\n\n`);
+    // do something with the message
+  },
+});
+this.res.end();
