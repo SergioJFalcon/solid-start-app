@@ -11,6 +11,7 @@
     "@corvu/resizable": "^0.2.1",
     "@fontsource/inter": "^5.0.18",
     "@kobalte/core": "^0.13.1",
+    "@llm-eaf/node-event-source": "^1.0.1",
     "@solid-primitives/refs": "^1.0.8",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.13.3",

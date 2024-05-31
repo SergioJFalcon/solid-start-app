@@ -20,6 +20,9 @@ importers:
       '@kobalte/core':
         specifier: ^0.13.1
         version: 0.13.1(solid-js@1.8.17)
+      '@llm-eaf/node-event-source':
+        specifier: ^1.0.1
+        version: 1.0.1(axios@1.7.2)
       '@solid-primitives/refs':
         specifier: ^1.0.8
         version: 1.0.8(solid-js@1.8.17)
@@ -589,6 +592,11 @@ packages:
 
   '@kurkle/color@0.3.2':
     resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
+
+  '@llm-eaf/node-event-source@1.0.1':
+    resolution: {integrity: sha512-tKFbl77D6UzBBeB3Epa1jNGDgOq/L5Q6/qGjibUflfvBUNLIzcJlMvaN/6TLRKTGFmbSKPDdC72BoV5NcBYwJw==}
+    peerDependencies:
+      axios: ^1.6.7
 
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -3490,6 +3498,10 @@ snapshots:
       solid-js: 1.8.17
 
   '@kurkle/color@0.3.2': {}
+
+  '@llm-eaf/node-event-source@1.0.1(axios@1.7.2)':
+    dependencies:
+      axios: 1.7.2(debug@4.3.4)
 
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
