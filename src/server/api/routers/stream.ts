@@ -38,4 +38,29 @@ export const streamsRouter = createTRPCRouter({
 
       return data;
     }),
+    getSseStream: publicProcedure.query(async () => {
+      const url = 'https://external-api.com/sse';
+  
+      return new Promise((resolve, reject) => {
+        const events: any[] = [];
+  
+        const eventSource = new EventSource(url);
+        eventSource.onmessage = (event) => {
+          events.push(event.data);
+        };
+  
+        eventSource.onerror = (err) => {
+          eventSource.close();
+          reject(err);
+        };
+  
+        eventSource.onopen = () => {
+          // Wait for some time to collect events, then resolve
+          setTimeout(() => {
+            eventSource.close();
+            resolve(events);
+          }, 5000);
+        };
+      });
+    }),
 });
